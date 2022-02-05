@@ -1,4 +1,4 @@
-# Project 1: Shell Scripting
+# Project 1: Linked Lists
 
 By Melissa Swearingen
 
