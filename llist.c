@@ -1,13 +1,16 @@
 #include <stdio.h>
-// #include <stdlib.h>
+#include <stdlib.h>
 // #include <string.h>
 // #include <unistd.h>
 // #include <sys/mman.h>
 #include "llist.h"
 
-// void llist_insert_head(struct node **head, struct node *n) {
-//     // TODO: code to insert at head
-// }
+void llist_insert_head(struct node **head, struct node *n) {
+    char *new_node = node_alloc(n);
+    new_node->value = *n;
+    new_node->next = head;
+    head = new_node;
+}
 
 // void node *llist_delete_head(struct node **head) {
 
@@ -48,7 +51,9 @@ int main(int argc, char *argv[]) {
     struct node *n = node_alloc(10);
     llist_insert_head(&head, n);
     
-    return 0;
+    printf("argc\t= %d\n", argc);
+    for (int i = 0; i < argc; i++)
+        printf("argv[%i]\t= %s\n", i, argv[i]);
 }
 
 # if 0
