@@ -35,7 +35,16 @@ void llist_insert_tail(struct node **head, struct node *n) {
 }
 
 void llist_print(struct node *head) {
-
+    while (node != NULL) {
+        printf("%d ", node->value);
+        node =node->next;
+    }
+    // struct Node* p = head;
+    // while (p) {
+    //     printf("%d -> ", p->value);
+    //     p = p->next;
+    // }
+    // printf("NULL");
 }
 
 void llist_free(struct node *n) {
