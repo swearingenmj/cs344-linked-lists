@@ -11,9 +11,18 @@ void llist_insert_head(struct node **head, struct node *n) {
     *head = n;  // change head pointer to point to the new node
 }
 
-// void node *llist_delete_head(struct node **head) {
+struct node *llist_delete_head(struct node **head) {
+    struct node *temp;
 
-// }
+    // if the list is empty return NULL
+    if (head == NULL || *head == NULL) {
+        return NULL;
+    }
+
+    temp = *head; // store the head in a temp variable
+    *head = (*head)->next; // have the head point to the next node
+    return temp; // return the temp variable
+}
 
 void llist_insert_tail(struct node **head, struct node *n) {
     // find tail of list and insert n
@@ -43,6 +52,9 @@ void llist_print(struct node *head) {
 // }
 
 struct node *node_alloc(int value) {
+    // allocate a new struct node with a
+        // value of 3490 and a
+        // nect of NULL
     struct node* node = (struct node*) malloc(sizeof(struct node));
     node->value = value;
     node->next = NULL;
@@ -50,19 +62,26 @@ struct node *node_alloc(int value) {
 }
 
 // void node_free(struct node *n) {
+    // call for every node in the list
+
+
+    // head will be set to NULL
+
 
 // }
 
-int main(int argc, char *argv[]) {
+int main(void) { // int argc, char *argv[]) {
 
-    struct node *head = NULL;
+    // struct node *head = NULL;
 
-    struct node *n = node_alloc(10);
-    llist_insert_head(&head, n);
+    // struct node *n = node_alloc(10);
+    // llist_insert_head(&head, n);
     
-    printf("argc\t= %d\n", argc);
-    for (int i = 0; i < argc; i++)
-        printf("argv[%i]\t= %s\n", i, argv[i]);
+    // char *s = "16";
+
+    // int x = atoi(s);
+
+    // printf("%d\n", x * 2);  // 32
 }
 
 # if 0
