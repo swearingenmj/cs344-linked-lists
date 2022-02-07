@@ -17,7 +17,7 @@ struct node *llist_delete_head(struct node **head) {
     // if the list is empty return NULL
     if (head == NULL || *head == NULL) {
         return NULL;
-    }
+    } 
 
     temp = *head; // store the head in a temp variable
     *head = (*head)->next; // have the head point to the next node
@@ -48,7 +48,9 @@ void llist_print(struct node *head) {
 }
 
 // void llist_free(struct node **head) {
+//     // call node_free() for each node
 
+//     // set head to NULL
 // }
 
 struct node *node_alloc(int value) {
@@ -61,14 +63,10 @@ struct node *node_alloc(int value) {
     return node;
 }
 
-// void node_free(struct node *n) {
-    // call for every node in the list
-
-
-    // head will be set to NULL
-
-
-// }
+void node_free(struct node *n) {
+    // free node that was allocated
+    free(n);
+}
 
 int main(void) { // int argc, char *argv[]) {
 
