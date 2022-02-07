@@ -47,19 +47,23 @@ void llist_print(struct node *head) {
     printf("NULL");
 }
 
-// void llist_free(struct node **head) {
-//     // call node_free() for each node
-
-//     // set head to NULL
-// }
+void llist_free(struct node **head) {
+    struct node *temp;
+    // call node_free() for each node
+    while (*head != NULL) {
+        temp = *head;
+        *head = temp->next;
+        node_free(temp);
+    }
+}
 
 struct node *node_alloc(int value) {
     // allocate a new struct node with a
         // value of 3490 and a
         // nect of NULL
-    struct node* node = (struct node*) malloc(sizeof(struct node));
-    node->value = value;
-    node->next = NULL;
+    struct node* node = (struct node*) malloc(sizeof(struct node)); // allocate the node
+    node->value = value; // set the new nodes value
+    node->next = NULL; // set the new node's next struct to NULL
     return node;
 }
 
