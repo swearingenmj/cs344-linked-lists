@@ -6,7 +6,18 @@
 int main(int argc, char *argv[]) {
 
     struct node *head = NULL;
-    
+
+    // Test!!
+    // llist_insert_head(&head, node_alloc(10));
+    // llist_insert_head(&head, node_alloc(1));
+    // llist_insert_head(&head, node_alloc(15));
+    // llist_print(head);
+    // llist_delete_head(&head);
+    // llist_print(head);
+    // llist_insert_tail(&head, node_alloc(100));
+    // llist_print(head);
+    // llist_free(&head);
+    // llist_print(head);
 
     for (int i = 1; i < argc; i++) {
 
@@ -18,10 +29,8 @@ int main(int argc, char *argv[]) {
         int x = atoi(s);
 
         if (strcmp(argv[i], "ih") == 0) {
-            // x = atoi(argv[i++]);
             llist_insert_head(&head, node_alloc(x));
         } else if (strcmp(argv[i], "it") == 0) {
-            // x = atoi(argv[i++]);
             llist_insert_tail(&head, node_alloc(x));
         } else if (strcmp(argv[i], "dh") == 0) {
             llist_delete_head(&head);
