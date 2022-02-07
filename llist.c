@@ -1,9 +1,46 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
-// #include <string.h>
-// #include <unistd.h>
-// #include <sys/mman.h>
 #include "llist.h"
+
+int main(int argc, char *argv[]) {
+
+    struct node *head = NULL;
+    
+
+    for (int i = 1; i < argc; i++) {
+
+        // how to use atoi() example:
+        // char *s = "16";
+        // int x = atoi(s);
+
+        char *s = argv[i++];
+        int x = atoi(s);
+
+        if (strcmp(argv[i], "ih") == 0) {
+            // x = atoi(argv[i++]);
+            llist_insert_head(&head, node_alloc(x));
+        } else if (strcmp(argv[i], "it") == 0) {
+            // x = atoi(argv[i++]);
+            llist_insert_tail(&head, node_alloc(x));
+        } else if (strcmp(argv[i], "dh") == 0) {
+            llist_delete_head(&head);
+        } else if (strcmp(argv[i], "f") == 0) {
+            llist_free(&head);
+        } else if (strcmp(argv[i], "p") == 0) {
+            llist_print(head);
+        }
+    }
+}
+
+    // ih: insert the next number on the command line at the
+    //     head of the list
+    // it: insert the next number on the command line at the
+    //     tail fo the list
+    // dh: delete the node from the head of the list; does 
+    //     nothing if the list is empty
+    // f: free the entire list
+    // p: print the list to standard output
 
 void llist_insert_head(struct node **head, struct node *n) {
     // insert n at head of list
@@ -70,20 +107,6 @@ struct node *node_alloc(int value) {
 void node_free(struct node *n) {
     // free node that was allocated
     free(n);
-}
-
-int main(void) { // int argc, char *argv[]) {
-
-    // struct node *head = NULL;
-
-    // struct node *n = node_alloc(10);
-    // llist_insert_head(&head, n);
-    
-    // char *s = "16";
-
-    // int x = atoi(s);
-
-    // printf("%d\n", x * 2);  // 32
 }
 
 # if 0
