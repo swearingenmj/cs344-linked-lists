@@ -6,19 +6,28 @@
 #include "llist.h"
 
 void llist_insert_head(struct node **head, struct node *n) {
-    char *new_node = node_alloc(n);
-    new_node->value = *n;
-    new_node->next = head;
-    head = new_node;
+    // insert n at head of list
+    n->next = *head;    // sets the next pointer of the new node to point to the current head of the list
+    *head = n;  // change head pointer to point to the new node
 }
 
 // void node *llist_delete_head(struct node **head) {
 
 // }
 
-// void llist_insert_tail(struct node **head, struct node *n) {
+void llist_insert_tail(struct node **head, struct node *n) {
+    // find tail of list and insert n
+    struct node* current = *head;
 
-// }
+    if (current == NULL) {
+        *head = n;
+    } else {
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        current->next = n;
+    }
+}
 
 void llist_print(struct node *head) {
     struct node* p = head;
