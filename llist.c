@@ -21,16 +21,11 @@ int main(int argc, char *argv[]) {
 
     for (int i = 1; i < argc; i++) {
 
-        // how to use atoi() example:
-        // char *s = "16";
-        // int x = atoi(s);
-
-        char *s = argv[i++];
-        int x = atoi(s);
-
         if (strcmp(argv[i], "ih") == 0) {
+            int x = atoi(argv[++i]);
             llist_insert_head(&head, node_alloc(x));
         } else if (strcmp(argv[i], "it") == 0) {
+            int x = atoi(argv[++i]);
             llist_insert_tail(&head, node_alloc(x));
         } else if (strcmp(argv[i], "dh") == 0) {
             llist_delete_head(&head);
@@ -86,11 +81,14 @@ void llist_insert_tail(struct node **head, struct node *n) {
 
 void llist_print(struct node *head) {
     struct node* p = head;
-    while (p) {
-        printf("%d -> ", p->value);
+    while (p != NULL) {
+        printf("%d", p->value);
+        if (p->next != NULL) {
+            printf(" -> ");
+        } 
         p = p->next;
     }
-    printf("NULL");
+    printf("\n");
 }
 
 void llist_free(struct node **head) {
